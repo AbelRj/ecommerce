@@ -1,7 +1,16 @@
+import { Link } from "react-router-dom";
+
 const Logo = () => {
-    return (  
-        <img src="https://edteam-media.s3.amazonaws.com/web/modules/brand/logo.png" alt="" />
+    return (
+        <div className="flex">
+        <Link to="/">
+          <img
+            src=""
+            alt="Logo EDteam White"
+          />
+        </Link>
+      </div>
     );
 }
- 
+
 export default Logo;
