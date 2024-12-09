@@ -4,7 +4,7 @@ import router from './router/Router'
 import "./styles/index.css"
 
 import { CartProvider } from './context/CartContext'
-import { UserProvider } from './context/UserContext'
+import { UserProvider } from './context/userContext'
 
 createRoot(document.getElementById('root')).render(
     <CartProvider>
@@ -12,6 +12,6 @@ createRoot(document.getElementById('root')).render(
             <RouterProvider router={router} />
         </UserProvider>
     </CartProvider>
-    
+
 
 )

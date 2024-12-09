@@ -3,7 +3,7 @@ import { deleteToken, token } from "../../../helpers/auth";
 import { useContext } from "react";
 
 import { CartContext } from "../../../context/CartContext";
-import { UserContext } from "../../../context/UserContext";
+import { UserContext } from "../../../context/userContext";
 
 const MainMenu = () => {
     const nav = useNavigate()

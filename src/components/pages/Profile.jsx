@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { UserContext } from "../../context/UserContext"
+import { UserContext } from "../../context/userContext"
 import { token } from "../../helpers/auth"
 import useFetch from "../../hooks/useFetch"
 import Loader from "../atoms/Loader"
