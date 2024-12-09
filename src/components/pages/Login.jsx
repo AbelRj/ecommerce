@@ -4,7 +4,8 @@ import { setToken } from "../../helpers/auth"
 import { Link, useNavigate } from "react-router-dom"
 import LoginTemplate from "../templates/LoginTemplate"
 import { useContext, useState } from "react"
-import { UserContext } from "../../context/userContext"
+import { UserContext } from "../../context/UserContext"
+
 const Login = () => {
     const nav = useNavigate()
     const { setUserData } = useContext(UserContext);
