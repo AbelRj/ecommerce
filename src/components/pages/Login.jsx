@@ -3,10 +3,11 @@ import { API_URL } from "../../constans/env"
 import { setToken } from "../../helpers/auth"
 import { Link, useNavigate } from "react-router-dom"
 import LoginTemplate from "../templates/LoginTemplate"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { UserContext } from "../../context/userContext"
 const Login = () => {
     const nav = useNavigate()
-  
+    const { setUserData } = useContext(UserContext);
     const [error, setError] = useState()
   
     const handleSubmit = (e) => {
@@ -20,8 +21,13 @@ const Login = () => {
       axios
         .post(`${API_URL}/public/login`, data)
         .then((resp) => {
+          //const { user } = resp.data.data;
           setToken(resp.data.data.token)
+          //console.log(resp)
           nav("/")
+          // Establecer los datos del usuario en el contexto
+          setUserData(resp.data.data.user);
+
         })
         .catch((err) => {
           setError(err)

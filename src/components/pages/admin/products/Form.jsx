@@ -1,10 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+
 import { token } from "../../../../helpers/auth"
 import Loader from "../../../atoms/Loader"
 import { API_URL } from "../../../../constans/env"
-
 
 const Form = () => {
   const nav = useNavigate()
@@ -13,7 +13,6 @@ const Form = () => {
   const [hasDelivery, setHasDelivery] = useState(false)
   const [isNew, setIsNew] = useState(false)
   const [product, setProduct] = useState()
-  const [error, setError] = useState()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -21,11 +20,8 @@ const Form = () => {
       setLoading(true)
       axios
         .get(`${API_URL}/public/products/${params.id}`)
-        .then((resp) => {
-          setProduct(resp.data.data)
-        })
-        .catch(error =>{
-            setError(error)
+        .then((data) => {
+          setProduct(data.data.data)
         })
         .finally(() => {
           setLoading(false)
@@ -35,7 +31,7 @@ const Form = () => {
 
   useEffect(() => {
     if (!product) return
-    setIsNew(product.features.stats.isNew)
+   setIsNew(product.features.stats.isNew)
     setHasDelivery(product.features.stats.hasDelivery)
   }, [product])
 
@@ -95,7 +91,7 @@ const Form = () => {
     <div className="max-w-256 m-auto">
       <section className="pt-10">
         <h1 className="text-4xl mb-6">
-          {`${params.id ? "Editar" : "Crear"}`} producto
+          {`${params.iD ? "Editar" : "Crear"}`} producto
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-6 mb-6">
@@ -104,7 +100,7 @@ const Form = () => {
               <input
                 type="text"
                 name="productName"
-                defaultValue={product && product.product_name}
+               defaultValue={product && product.product_name}
                 required
               />
             </div>
@@ -133,7 +129,7 @@ const Form = () => {
                 type="text"
                 name="image1"
                 required
-                defaultValue={product && product.images[0]}
+               defaultValue={product && product.images[0]}
               />
             </div>
             <div>
@@ -142,7 +138,7 @@ const Form = () => {
                 type="text"
                 name="brand"
                 required
-                defaultValue={product && product.features.details.brand}
+               defaultValue={product && product.features.details.brand}
               />
             </div>
             <div>
@@ -160,7 +156,7 @@ const Form = () => {
                 type="text"
                 name="color"
                 required
-                defaultValue={product && product.features.details.color}
+               defaultValue={product && product.features.details.color}
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -170,7 +166,7 @@ const Form = () => {
                   type="text"
                   name="year"
                   required
-                  defaultValue={product && product.features.details.year}
+                 defaultValue={product && product.features.details.year}
                 />
               </div>
               <div>
@@ -179,7 +175,7 @@ const Form = () => {
                   type="number"
                   name="rating"
                   required
-                  defaultValue={product && product.features.stats.rating}
+                 defaultValue={product && product.features.stats.rating}
                   min="1"
                   max="5"
                   step="1"
@@ -202,7 +198,7 @@ const Form = () => {
                 className="outline-none h-9 rounded"
                 defaultValue={
                   product ? product.features.details.category : "Otros"
-                }
+               }
               >
                 <option value="Otros" disabled selected>
                   Selecciona una categoría
@@ -224,8 +220,8 @@ const Form = () => {
                       type="radio"
                       name="delivery"
                       className="mt-1"
-                      onChange={() => setHasDelivery(true)}
-                      checked={hasDelivery}
+                     onChange={() => setHasDelivery(true)}
+                     checked={hasDelivery}
                     />
                   </label>
                   <label className="flex items-center gap-1">
@@ -234,8 +230,8 @@ const Form = () => {
                       type="radio"
                       name="no-delivery"
                       className="mt-1"
-                      onChange={() => setHasDelivery(false)}
-                      checked={!hasDelivery}
+                     onChange={() => setHasDelivery(false)}
+                     checked={!hasDelivery}
                     />
                   </label>
                 </div>

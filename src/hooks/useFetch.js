@@ -5,7 +5,7 @@ import { API_URL } from "../constans/env"
 
 const useFetch = (endpoint, headers = {}) => {
 
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
     const [error, setError] = useState()
     const [loading, setLoading] = useState(true)
 

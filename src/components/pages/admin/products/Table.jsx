@@ -42,28 +42,32 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            {data.length === 0 && (
+            {!data ? (
               <tr>
                 <td colSpan={4}>No existen productos actualmente</td>
               </tr>
-            )}
-            {data.map((prod) => (
-              <tr key={prod.id}>
-                <td>{prod.product_name}</td>
-                <td>{prod.price}</td>
-                <td>
-                  <Link to={`/admin/productos/editar/${prod.id}`}>Editar</Link>
-                </td>
-                <td>
-                  <a
-                    className="text-red-600 hover:cursor-pointer"
-                    onClick={() => deleteProduct(prod)}
-                  >
-                    Eliminar
-                  </a>
-                </td>
-              </tr>
-            ))}
+            ):
+            (
+              <>{data.map((prod) => (
+                <tr key={prod.id}>
+                  <td>{prod.product_name}</td>
+                  <td>{prod.price}</td>
+                  <td>
+                    <Link to={`/admin/productos/editar/${prod.id}`}>Editar</Link>
+                  </td>
+                  <td>
+                    <a
+                      className="text-red-600 hover:cursor-pointer"
+                      onClick={() => deleteProduct(prod)}
+                    >
+                      Eliminar
+                    </a>
+                  </td>
+                </tr>
+              ))}</>
+            )
+            }
+            
           </tbody>
         </table>
       </section>

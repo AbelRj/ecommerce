@@ -1,16 +1,15 @@
-import { API_URL } from "../../constans/env"
+import Banner from "../organisms/Banner"
+import MainProducts from "../organisms/MainProducts.jsx"
 
-function Home() {
-
-
+const Home = () => {
   return (
     <>
-        <div>
-      <h1>Hola mundo {API_URL}</h1>
-      <p>Sitio de Desarrollo</p>
-    </div>
+      <Banner />
+      <div>
+        <h2 className="mt-8 text-2xl">Últimos productos</h2>
+        <MainProducts />
+      </div>
     </>
-
   )
 }
 
